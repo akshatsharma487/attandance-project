@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from '../components/Navbar';
 import { attendanceAPI } from '../utils/api';
 import { format } from 'date-fns';
@@ -12,11 +12,7 @@ const Attendance = () => {
     endDate: '',
   });
 
-  useEffect(() => {
-    fetchAttendance();
-  }, []);
-
-  const fetchAttendance = async () => {
+  const fetchAttendance = useCallback(async () => {
     try {
       const params = {};
       if (dateRange.startDate && dateRange.endDate) {
@@ -31,7 +27,11 @@ const Attendance = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [dateRange]);
+
+  useEffect(() => {
+    fetchAttendance();
+  }, [fetchAttendance]);
 
   const handleFilter = (e) => {
     e.preventDefault();
