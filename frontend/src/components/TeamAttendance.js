@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './Navbar';
 import { attendanceAPI } from '../utils/api';
 import { format } from 'date-fns';
@@ -10,11 +10,7 @@ const TeamAttendance = () => {
     new Date().toISOString().split('T')[0]
   );
 
-  useEffect(() => {
-    fetchAttendance();
-  }, [selectedDate]);
-
-  const fetchAttendance = async () => {
+  const fetchAttendance = useCallback(async () => {
     try {
       const response = await attendanceAPI.getTeamAttendance({ date: selectedDate });
       setAttendance(response.data.data);
@@ -23,7 +19,11 @@ const TeamAttendance = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDate]);
+
+  useEffect(() => {
+    fetchAttendance();
+  }, [fetchAttendance]);
 
   if (loading) {
     return <div className="loading">Loading...</div>;
