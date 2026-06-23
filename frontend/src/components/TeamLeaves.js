@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './Navbar';
 import { leaveAPI } from '../utils/api';
 import { format } from 'date-fns';
@@ -8,11 +8,7 @@ const TeamLeaves = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('pending');
 
-  useEffect(() => {
-    fetchLeaves();
-  }, [filter]);
-
-  const fetchLeaves = async () => {
+  const fetchLeaves = useCallback(async () => {
     try {
       const params = filter !== 'all' ? { status: filter } : {};
       const response = await leaveAPI.getTeamLeaves(params);
@@ -22,7 +18,11 @@ const TeamLeaves = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
+
+  useEffect(() => {
+    fetchLeaves();
+  }, [fetchLeaves]);
 
   const handleApprove = async (id) => {
     try {
