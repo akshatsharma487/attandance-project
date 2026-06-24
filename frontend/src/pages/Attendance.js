@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Navbar from '../components/Navbar';
 import { attendanceAPI } from '../utils/api';
 import { format } from 'date-fns';
 import './Attendance.css';
@@ -44,7 +43,6 @@ const Attendance = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <h1>Attendance History</h1>
 
