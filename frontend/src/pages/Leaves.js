@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
 import { leaveAPI } from '../utils/api';
 import { format } from 'date-fns';
 import './Leaves.css';
@@ -55,7 +54,6 @@ const Leaves = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <div className="page-header">
           <h1>Leave Management</h1>
