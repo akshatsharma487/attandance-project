@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
 import { employeeAPI, departmentAPI, roleAPI } from '../utils/api';
 import './Management.css';
 
@@ -77,7 +76,6 @@ const Employees = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <div className="page-header">
           <h1>Employee Management</h1>
