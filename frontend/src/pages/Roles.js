@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
 import { roleAPI, departmentAPI } from '../utils/api';
 import './Management.css';
 
@@ -54,7 +53,6 @@ const Roles = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <div className="page-header">
           <h1>Job Role Management</h1>
