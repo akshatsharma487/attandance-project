@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Navbar from './Navbar';
 import { attendanceAPI } from '../utils/api';
 import { format } from 'date-fns';
 
@@ -31,7 +30,6 @@ const TeamAttendance = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <h1>Team Attendance</h1>
 
