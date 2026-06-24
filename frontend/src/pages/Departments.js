@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
 import { departmentAPI } from '../utils/api';
 import './Management.css';
 
@@ -47,7 +46,6 @@ const Departments = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <div className="page-header">
           <h1>Department Management</h1>
